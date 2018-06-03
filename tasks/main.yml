@@ -14,7 +14,7 @@
 - name: Copy over Splunk Universal Forwarder Credential file (splunkclouduf.spl)
   copy:
     src: "{{ splunk_credential_file_src }}"
-    dest: "{{ splunk_credential_file_dest }} /tmp/splunkclouduf.spl"
+    dest: "{{ splunk_credential_file_dest }}"
     owner: root
     group: root
     mode: 0644
