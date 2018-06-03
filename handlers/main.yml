@@ -1,0 +1,10 @@
+---
+- name: Start Service | splunk
+  become: true
+  become_user: splunk
+  command: "/opt/splunkforwarder/bin/splunk --accept-license start"
+
+- name: Restart Service | splunk
+  become: true
+  become_user: splunk
+  command: "/opt/splunkforwarder/bin/splunk restart"

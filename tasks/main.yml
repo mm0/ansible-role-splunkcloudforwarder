@@ -1,0 +1,26 @@
+---
+- name: Copy over Splunk installer | splunk
+  copy:
+    src: "files/{{ splunk_universal_forwarder_filename }}"
+    dest: "/tmp/{{ splunk_universal_forwarder_filename }}"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Install Splunk Universal Forwarder | splunk
+  apt:
+    deb: "/tmp/{{ splunk_universal_forwarder_filename }}"
+
+- name: Copy over Splunk Universal Forwarder Credential file (splunkclouduf.spl)
+  copy:
+    src: "{{ splunk_credential_file_src }}"
+    dest: "{{ splunk_credential_file_dest }} /tmp/splunkclouduf.spl"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Install splunk credentials file
+  shell: "./bin/splunk install app {{ splunk_credential_file_dest }} -auth {{ splunk_auth_username }}:{{ splunk_auth_password }}"
+  args:
+    chdir: /opt/splunkforwarder
+

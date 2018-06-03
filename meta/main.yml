@@ -1,0 +1,13 @@
+---
+dependencies:
+galaxy_info:
+  author: "Matt Margolin"
+  description: "Installs and configures splunkforwarder for Splunk Cloug using SPL authenticaition file"
+  license: "MIT"
+  platforms:
+    - name: "Ubuntu"
+      versions:
+        - all
+  categories:
+    - "monitoring"
+    - "automation"
